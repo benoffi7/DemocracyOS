@@ -1,0 +1,60 @@
+- var prepend = forum ? ('/' + forum.name) : ''
+
+#userlist-wrapper
+  .userlist-admin
+    .row.well.well-lg
+      .col-xs-12.col-md-2
+        a.btn.btn-success.btn-block.new(href='#{prepend}/admin/userlist/create')
+          span.glyphicon.glyphicon-plus
+          = ' ' + t('admin-userlist.list.add-user')
+      .col-md-7.col-xs-12.text-center
+        .input-group.input-group-md
+          span.input-group-addon
+            i.glyphicon.glyphicon-search
+          input.form-control.search(type='text', placeholder='#{t("admin-userlist.list.search.placeholder")}', autofocus)
+      .col-md-3.col-xs-12.text-center
+        .btn-group
+          span.sort-label.pull-left=t('admin-userlist.list.sort')
+          button.btn.btn-primary.sort(data-sort='user-email')
+            span.glyphicon.glyphicon-envelope
+          button.btn.btn-primary.sort(data-sort='user-title')
+            span.glyphicon.glyphicon-sort
+    .row
+      .col-md-6.form-group
+        label= t('admin-userlist-form.label.level')
+        select.form-control.select.filterLevels(name='level', validate='required', f-state=actualState)
+          option(value="-1")=t('admin-userlist-form.all-levels')
+          - each level, index in levels
+            if actualLevel == index
+              option(selected="selected", value=index)=level
+            else
+              option(value=index)=level
+      .col-md-6.form-group
+        label= t('admin-userlist-form.label.state')
+        select.form-control.select.filterStates(name='level', validate='required', f-level=actualLevel)
+          option(value="-1")=t('admin-userlist-form.all-states')
+          - each state, index in states
+            if actualState == index
+              option(selected="selected", value=index)=state
+            else
+              option(value=index)=state
+    .row
+      .list.list-group
+        - each user in userlist
+          a.list-group-item(href="#{prepend}/admin/userlist/" + user.id, data-userid=user.id)
+            if user.deletedAt == null
+              button.btn.btn-default.pull-right.delete-user
+                span.glyphicon.glyphicon-remove-circle            
+            else
+              button.btn.btn-default.pull-right.reactive-user
+                span.glyphicon.glyphicon-ok-circle
+            h4.user-title= user.fullName            
+            span.glyphicon.glyphicon-user
+            span.text.user-levelType=user.levelType +" - "+user.usertype.name
+            span.glyphicon.glyphicon-envelope
+            span.text.user-email=user.email
+            span.glyphicon.glyphicon-time
+            if user.deletedAt == null
+              span.text.user-createdAt=t('admin-userlist.list.created') + " " + user.createdAt.replace(/T/, ' ').replace(/\..+/, '')
+            else
+              span.text.user-createdAt=t('admin-userlist.list.deleted') + " " + user.deletedAt.replace(/T/, ' ').replace(/\..+/, '')

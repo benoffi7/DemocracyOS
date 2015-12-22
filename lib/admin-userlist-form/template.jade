@@ -1,0 +1,44 @@
+- var tabindex = 1
+
+#userlist-wrapper
+  .userlist-admin
+    .heading
+      .circle
+        i.icon-user
+      h1= t(form.title)
+    form.form(action=form.action, method="post", role="form", autocomplete="off", autovalidate='autovalidate', autosubmit='autosubmit')
+      ul.form-messages
+      .form-group
+        label= t('admin-userlist-form.label.firstName')
+        input.form-control(type='text', id="firstName", name='firstName', tabindex=tabindex++, placeholder=t('admin-userlist-form.placeholder.firstName'), value=userlist.firstName, validate='required')
+      .form-group
+        label= t('admin-userlist-form.label.lastName')
+        input.form-control(type='text', id="lastName", name='lastName', tabindex=tabindex++, placeholder=t('admin-userlist-form.placeholder.lastName'), value=userlist.lastName, validate='required')
+      .form-group
+        label= t('admin-userlist-form.label.level')
+        select.form-control(name='level', tabindex=tabindex++, validate='required')
+          - each level, index in levels
+            option(selected= true ? userlist.level === index : false, value=index)= level
+      .form-group
+        label= t('admin-userlist-form.label.usertype')
+        select.form-control(name='usertype', tabindex=tabindex++, validate='required')
+          - each usertype, index in userstypes
+            option(selected= true ? userlist.usertype === usertype.id : false, value=usertype.hash)= usertype.name	
+      if form.action == '/api/user/create'
+        .form-group
+          label= t('admin-userlist-form.label.password')
+          input.form-control(type='password', id="password", name='password', tabindex=tabindex++, placeholder=t('admin-userlist-form.placeholder.password'), value=userlist.password, validate='required min-length:6')
+        .form-group
+          label= t('admin-userlist-form.label.samepassword')
+          input.form-control(type='password', name='re_password', tabindex=tabindex++, placeholder=t('admin-userlist-form.placeholder.passwordrepeat'), validate='required same:password')
+        .form-group
+          label= t('admin-userlist-form.label.email')
+          input.form-control(type='email', id="email", name='email', tabindex=tabindex++, placeholder=t('admin-userlist-form.placeholder.email'), value=userlist.email, validate='required email')
+        .form-group
+          label= t('admin-userlist-form.label.emailValidated')
+          input.form-control(type='email', id="emailValidated", name='emailValidated', tabindex=tabindex++, placeholder=t('admin-userlist-form.placeholder.emailValidated'), value=userlist.emailValidated, validate='required same:email')
+      else
+        .form-group
+          label= t('admin-userlist-form.label.email')
+          input.form-control(type='email', id="email", name='email', disabled='disabled', tabindex=tabindex++, placeholder=t('admin-userlist-form.placeholder.email'), value=userlist.email)
+      .form-group: button.btn.btn-success.btn-block.btn-lg(tabindex=tabindex++)=t('admin-userlist-form.button.submit')

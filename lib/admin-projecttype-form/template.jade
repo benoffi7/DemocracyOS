@@ -1,0 +1,14 @@
+- var tabindex = 1
+
+#projecttype-wrapper
+  .projecttype-admin
+    .heading
+      .circle
+        i.icon-user
+      h1= t(form.title)
+    form.form(action=form.action, method="post", role="form", autocomplete="off", autovalidate='autovalidate', autosubmit='autosubmit')
+      ul.form-messages
+      .form-group
+        label= t('admin-projectstypes-form.label.name')
+        input.form-control(type='text', id="name", name='name', tabindex=tabindex++, placeholder=t('admin-projectstypes-form.placeholder.name'), value=projecttype.name, validate='required')
+      .form-group: button.btn.btn-success.btn-block.btn-lg(tabindex=tabindex++)=t('admin-projectstypes-form.button.submit')

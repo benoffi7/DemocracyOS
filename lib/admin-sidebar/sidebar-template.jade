@@ -1,0 +1,9 @@
+ul.admin-menu.nav.nav-pills.nav-stacked
+  li: a(href="#{forumUrl}/admin/topics" data-section='topics')=t('admin-sidebar.topics.title')
+  - if (user.staff)
+    li: a(href="#{forumUrl}/admin/tags" data-section='tags')=t('admin-sidebar.tags.title')
+    li: a(href="#{forumUrl}/admin/projectstypes" data-section='projectstypes')=t('admin-sidebar.projectstypes.title')
+    li: a(href="#{forumUrl}/admin/userlist" data-section='userlist')=t('admin-sidebar.userlist.title')
+    li: a(href="#{forumUrl}/admin/userstypes" data-section='userstypes')=t('admin-sidebar.userstypes.title')
+  - if (config.usersWhitelist)
+    li: a(href="/admin/users" data-section='users')=t('admin-sidebar.whitelists.title')

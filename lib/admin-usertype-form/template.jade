@@ -1,0 +1,22 @@
+- var tabindex = 1
+
+#usertype-wrapper
+  .usertype-admin
+    .heading
+      .circle
+        i.icon-user
+      h1= t(form.title)
+    form.form(action=form.action, method="post", role="form",enctype="multipart/form-data", autocomplete="off", autovalidate='autovalidate', autosubmit='autosubmit')
+      ul.form-messages
+      .form-group
+        label= t('admin-userstypes-form.label.name')
+        input.form-control(type='text', id="name", name='name', tabindex=tabindex++, placeholder=t('admin-userstypes-form.placeholder.name'), value=usertype.name, validate='required')
+      .form-group
+        label= t('admin-userstypes-form.label.image')
+        .image-container
+          input.form-control(type='file', id="imagefile", name='imagefile', tabindex=tabindex++, placeholder=t('admin-userstypes-form.placeholder.file'), value=usertype.file, validate='required')
+          img(src=usertype.image, width="65")
+          label= t('admin-userstypes-form.label.loadimage')
+        .controls
+          input.form-control(type='text', id="image", name='image', tabindex=tabindex++, placeholder=t('admin-userstypes-form.placeholder.image'), value=usertype.image, validate='url')
+      .form-group: button.btn.btn-success.btn-block.btn-lg(tabindex=tabindex++)=t('admin-userstypes-form.button.submit')

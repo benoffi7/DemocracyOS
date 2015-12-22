@@ -1,0 +1,54 @@
+#profile-wrapper.hide
+  .profile-settings
+    .heading
+      .circle
+        i.icon-user
+      h1= t('settings.profile')
+    form.form(action="/settings/profile", method="post", role="form", autocomplete="off", autovalidate='autovalidate', autosubmit='autosubmit')
+      ul.form-messages
+      .form-group
+        label #{t('settings.first-name')}
+        input.form-control(type='text', id="firstName", name='firstName', tabindex=1, placeholder=t('settings.first-name'), value='#{user.firstName}', validate='required firstname')
+      .form-group
+        label #{t('settings.last-name')}
+        input.form-control(type='text', id="lastName", name='lastName', tabindex=2, placeholder=t('settings.last-name'), value='#{user.lastName}', validate='required lastname')
+      .form-group
+        label= t('signup.email')
+        input.form-control(type='text', disabled='disabled' name='email', tabindex=3, placeholder=t('forgot.mail.example'), value='#{user.email}', validate='required email')
+       
+      .form-group
+        label= "Web"
+        input.form-control(type='text', name='web', tabindex=4, placeholder='Web Url', value=user.web, validate='url')
+
+      .form-group.social-form
+        label.flaticon.social.facebook
+        input.form-control(type='text', name='facebook', tabindex=5, placeholder='Facebook Url', value=user.facebook, validate='url')
+
+      .form-group.social-form
+        label.flaticon.social.twitter
+        input.form-control(type='text', name='twitter', tabindex=6, placeholder='Twitter Url', value=user.twitter, validate='url')
+        
+      .form-group.social-form
+        label.flaticon.social.linkedin
+        input.form-control(type='text', name='linkedin', tabindex=7, placeholder='Linkedin Url', value=user.linkedin, validate='url')
+        
+      .form-group.social-form
+        label.flaticon.social.google-plus
+        input.form-control(type='text', name='googlePlus', tabindex=8, placeholder='Google+ Url', value=user.googlePlus, validate='url')
+        
+      .form-group
+        label.flaticon.social.youtube
+        input.form-control(type='text', name='youtube', tabindex=9, placeholder='YouTube Url', value=user.youtube, validate='url')
+
+      .form-group
+        label #{t('settings.locale')}
+        select.form-control(id='locale', name='locale', tabindex=10)
+        //- input.form-control(type='text', id="lastName", name='lastName', tabindex=2, placeholder=t('settings.last-name'), value='#{user.lastName}', validate='required lastname')
+      .form-group.profile-picture
+        .image-container
+          img(src=user.profilePicture(), width="65")
+        .controls
+          a(href="https://gravatar.com", target="_blank")
+            strong= t('settings.change-at-gravatar')
+          input.form-control(type='text', name='profilePictureUrl', tabindex=11, placeholder=t('settings.paste-url-image'), value=user.profilePictureUrl, validate='url')
+      .form-group: button.btn.btn-success.btn-block.btn-lg(tabindex=12)=t('settings.save')
