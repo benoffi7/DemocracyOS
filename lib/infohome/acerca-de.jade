@@ -1,0 +1,9 @@
+#acercade-container
+  #acercade
+    .acercade-content.col-md-6.col-md-offset-3
+      - var clauses = contenido
+        each clause, i in clauses
+          - var classes = ['clause']
+          - classes.push(clause.empty ? 'hide' : 'commentable-section')
+          !=toHTML(clause, { className: classes, iframeResponsive: true })
+    

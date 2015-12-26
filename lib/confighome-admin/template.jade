@@ -1,0 +1,30 @@
+#topic-wrapper
+  .heading
+      .circle
+        i.icon-user
+      h1=t('confighome-form.label.title')
+  .topic-admin.col-md-9
+    form.form-horizontal(action="api/confighome", method="post", role="form", autocomplete="off", novalidate, autovalidate='autovalidate', autosubmit='autosubmit')
+      input(type='hidden', name='_confighome_id_', value=confighome.id)
+      .form-group
+        label= t('confighome-form.label.color')
+        input.form-control(type='text', id="menuColor", name='menuColor', tabindex=1, placeholder=t('confighome-form.placeholder.color'), value=confighome.menuColor, validate='required')
+      .form-group
+        label= t('confighome-form.label.logo')
+        select.form-control(name='logo', tabindex=2, validate='required')
+          - each logo, index in logos
+            option(selected= true ? confighome.logo === logo : false, value=logo)= logo
+      .form-group
+        label= t('confighome-form.label.popup')
+        textarea.form-control(name='text', tabindex=3, validate='required')= confighome.text
+      .form-group
+        label= t('confighome-form.label.acercade')
+        textarea.form-control(name='body', tabindex=4, validate='required')= confighome.body
+      .form-group
+        label= t('confighome-form.label.comofunciona')
+        textarea.form-control(name='bodyComo', tabindex=5)= confighome.bodyComo
+      input.btn.btn-success.btn-block.btn-lg.hide(type='submit', tabindex=6, value=t('admin-topics-form.button.submit'))
+      
+  .col-md-3.commands
+    a.btn.btn-success.btn-block.save
+      span=t('confighome-form.button.submit')

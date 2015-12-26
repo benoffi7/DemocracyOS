@@ -9,7 +9,7 @@
       a(href=config.homeLink || '/')
         - var mobileLogo = !!config.logoMobile
         - var classes = mobileLogo ? 'hidden-xs' : ''
-        img(src=config.logo, class=classes).logo-image
+        img(src="/boot/" + config.logo, class=classes).logo-image
         - if (mobileLogo)
           img(src=config.logoMobile).logo-image.visible-xs-inline-block
         //- span.logo-link=t('common.app-name')
@@ -24,6 +24,10 @@
     a(href='/signup', style=style).login.pull-right.anonymous-user
       i.icon-user
       span= t('header.signup')
-    - var target = config.homeLink ? {} : { 'target': '_blank'};
+    - var target = config.homeLink ? {} : { 'target': '_blank'};   
+    a.login.pull-left(href="/acerca-de", style=style)&attributes(target)
+      span= "Acerca De"
+    a.login.pull-left(href="/como-funciona", style=style)&attributes(target)
+      span= "¿Como Funciona?"
     a.login.pull-left(href=config.organizationUrl, style=style)&attributes(target)
       span= config.organizationName
