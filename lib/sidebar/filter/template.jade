@@ -17,6 +17,9 @@
         li(data-sort=name, class= active ? 'active' : '')
           a(href='#')= t(sort.label)
 
+  input-group.input-group-md
+    input.form-control.search(value=filter.search type='text', placeholder='#{t("landing.search.placeholder")}', autofocus, data-search)       
+
   .sidebar-filter-hide-voted(class=user.logged() ? '' : 'hide')
     input#hide-voted(type='checkbox',
       name='hide-voted',

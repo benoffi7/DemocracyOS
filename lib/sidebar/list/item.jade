@@ -13,7 +13,7 @@ li(data-id=item.id, class=active ? 'active' : '')
       if voted
         include ./check
 
-    span.title= item.mediaTitle
+    span.title.law-title= item.mediaTitle
     span.created-by
       if item.participants.length > 0
         - var cardinality = 1 === item.participants.length ? 'singular' : 'plural'

@@ -1,0 +1,32 @@
+.col-md-4
+  .well.law
+    if (law.closed)
+      .corner-ribbon.top-left(style="transform:rotate(-45deg);-webkit-transform:rotate(-45deg);")=t('landing.close.past')
+    a(href='/topic/#{law.id}').law-title-link.text-center
+      h2.law-title=law.mediaTitle
+    .law-closing-date.hide=law.closingAt
+    .author-wrapper
+      .author
+        a(href='/profile/#{law.author.id}')
+          img(src='#{law.author.avatar}')
+        p=t('landing.author') + ': '
+          a.author-link.law-author(href='/profile/#{law.author.id}')=law.author.fullName
+      br
+      .tags  
+        p=t('landing.project') + ': '
+          span.law-project=law.projecttype.name
+        p=t('landing.tag') + ': '
+          span.law-tag=law.tag.name
+      //.pic(style='background-image:url(#{law.imageUrl})')
+        span
+    .summary.hidden-xs
+      !=law.clauses
+    //.law-keywords.hide
+      =law.keywords.join(' ')
+  .participants
+    - if (law.participants.length)
+      span=law.participants.length
+      span=" " + t('landing.participate')
+    - else
+      span=t('landing.be.first')
+  a(href='/topic/#{law.id}').btn.btn-primary.btn-block.discuss=t('landing.discuss')

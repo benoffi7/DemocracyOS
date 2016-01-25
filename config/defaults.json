@@ -1,7 +1,7 @@
 {
-  "locale": "en",
+  "locale": "es",
   "protocol": "http",
-  "host": "localhost",
+  "host": "igniteit.ddns.net",
   "publicPort": 3000,
   "mongoUrl": "mongodb://localhost/DemocracyOS",
   "mongoUsersUrl": "",
@@ -36,15 +36,15 @@
     "redirect": "normal"
   },
   "notifications": {
-    "url": "",
-    "token": "",
+    "url": "http://localhost:9001/api/events",
+    "token": "123",
     "mailer": {
       "name": "The DemocracyOS Team",
-      "email": "no-reply@democracyos.org",
-      "service": "",
+      "email": "edunola13@hotmail.com",
+      "service": "hotmail",
       "auth": {
-        "user": "",
-        "pass": ""
+        "user": "edunola13@hotmail.com",
+        "pass": "Anabella89$"
       }
     }
   },
@@ -101,7 +101,7 @@
   "favicon": "/boot/favicon.ico",
   "organizationName": "Democracia Digital",
   "organizationEmail": "no-reply@democracyos.org",
-  "organizationUrl": "https://github.com/DemocracyOS/app",
+  "organizationUrl": "http://democraciadigital.com.ar/",
   "learnMoreUrl": "",
   "googleAnalyticsTrackingId": "",
   "rssEnabled": true,

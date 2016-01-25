@@ -4,7 +4,7 @@
       .circle
         i.icon-user
       h1= t('settings.profile')
-    form.form(action="/settings/profile", method="post", role="form", autocomplete="off", autovalidate='autovalidate', autosubmit='autosubmit')
+    form.form(action="/settings/profile", method="post", role="form", autocomplete="off", autovalidate='autovalidate', autosubmit-image='autosubmit-image', identifier='profile-wrapper')
       ul.form-messages
       .form-group
         label #{t('settings.first-name')}
@@ -44,11 +44,17 @@
         label #{t('settings.locale')}
         select.form-control(id='locale', name='locale', tabindex=10)
         //- input.form-control(type='text', id="lastName", name='lastName', tabindex=2, placeholder=t('settings.last-name'), value='#{user.lastName}', validate='required lastname')
-      .form-group.profile-picture
+      //.form-group.profile-picture
         .image-container
           img(src=user.profilePicture(), width="65")
         .controls
           a(href="https://gravatar.com", target="_blank")
             strong= t('settings.change-at-gravatar')
           input.form-control(type='text', name='profilePictureUrl', tabindex=11, placeholder=t('settings.paste-url-image'), value=user.profilePictureUrl, validate='url')
+      .form-group.profile-picture
+        .image-container
+          img(src=user.profilePicture(), width="65")
+        .controls
+          label='Imagen'
+          input.form-control(type='file', name='image', tabindex=11, placeholder=t('settings.paste-url-image'))
       .form-group: button.btn.btn-success.btn-block.btn-lg(tabindex=12)=t('settings.save')

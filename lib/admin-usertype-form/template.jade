@@ -6,17 +6,18 @@
       .circle
         i.icon-user
       h1= t(form.title)
-    form.form-nuevo(action=form.action, method="post", role="form",enctype="multipart/form-data", autocomplete="off", autovalidate='autovalidate', autosubmit='autosubmit')
+    form.form-nuevo(action=form.action, method="post", role="form",enctype="multipart/form-data", autocomplete="off", autovalidate='autovalidate', autosubmit-image='autosubmit-image', identifier='usertype-wrapper')
       ul.form-messages
       .form-group
         label= t('admin-userstypes-form.label.name')
         input.form-control(type='text', id="name", name='name', tabindex=tabindex++, placeholder=t('admin-userstypes-form.placeholder.name'), value=usertype.name, validate='required')
       .form-group
         label= t('admin-userstypes-form.label.image')
-        .image-container
-          input.form-control(type='file', id="displayImage", name='displayImage', tabindex=tabindex++, placeholder=t('admin-userstypes-form.placeholder.file'), value=usertype.file, validate='required')
-          img(src=usertype.image, width="65")
-          label= t('admin-userstypes-form.label.loadimage')
-        .controls
-          input.form-control(type='text', id="image", name='image', tabindex=tabindex++, placeholder=t('admin-userstypes-form.placeholder.image'), value=usertype.image, validate='url')
+        - if(usertype.id)
+          .image-container
+            input.form-control(type='file', id="displayImage", name='displayImage', tabindex=tabindex++, placeholder=t('admin-userstypes-form.placeholder.file'))
+            img(src='/uploads/usertype/' + usertype.id, width="65")
+        - else
+          .image-container
+            input.form-control(type='file', id="displayImage", name='displayImage', tabindex=tabindex++, placeholder=t('admin-userstypes-form.placeholder.file'), validate='required')
       .form-group: button.btn.btn-success.btn-block.btn-lg(tabindex=tabindex++)=t('admin-userstypes-form.button.submit')

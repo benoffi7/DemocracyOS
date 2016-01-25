@@ -171,7 +171,7 @@ body.browser-page
     display none
 
 section.site-content
-  padding-top header_height + 30px
+  padding-top header_height + 15px
   top 0
   left nav_proposal_width
   right 0
@@ -300,6 +300,77 @@ body
   overflow hidden
   text-overflow ellipsis
   white-space nowrap
+
+
+
+/* Es el PopUp */
+.huge-overlay
+  position fixed
+  display flex
+  justify-content center
+  align-items center
+  width 100%
+  height 100%
+  top 0
+  left 0
+  background rgba(50,128,132,0.95)
+  z-index 999999
+
+/* Overlay closing cross */
+.huge-overlay .huge-overlay-close 
+  width 80px
+  height 80px
+  position absolute
+  right 20px
+  overflow hidden
+  border none
+  background-color transparent
+  outline none
+  z-index 1000000
+
+.huge-overlay .huge-overlay-close .glyphicon 
+  font-size 36px
+
+.huge-overlay .body 
+  position relative
+  padding 15px
+  max-width 700px
+  max-height 100%
+  text-align center
+  font-size 24px
+  font-weight bold
+  text-shadow 1px 1px 1px #000
+  color #fff
+  overflow auto
+
+@media screen and (max-width 480px) 
+  .huge-overlay .body 
+    font-size 20px
+  
+
+.huge-overlay .body a 
+  color #fff
+
+.huge-overlay .body .btn 
+  margin-top 30px
+  padding 10px 40px
+  font-size 24px
+
+/* Effects */
+.huge-overlay-simplegenie 
+  visibility hidden
+  -webkit-transform translateY(60%) scale(0)
+  transform translateY(60%) scale(0)
+  -webkit-transition -webkit-transform 0.4s, visibility 0s 0.4s
+  transition transform 0.4s, visibility 0s 0.4s
+
+.huge-overlay-simplegenie.open 
+  visibility visible
+  -webkit-transform translateY(0%) scale(1)
+  transform translateY(0%) scale(1)
+  -webkit-transition -webkit-transform 0.4s
+  transition transform 0.4s
+
 
 @import '../*/styles'
 @import './boot-responsive'

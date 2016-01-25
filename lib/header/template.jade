@@ -9,7 +9,7 @@
       a(href=config.homeLink || '/')
         - var mobileLogo = !!config.logoMobile
         - var classes = mobileLogo ? 'hidden-xs' : ''
-        img(src="/boot/" + config.logo, class=classes).logo-image
+        img(src="/uploads/logo", class=classes).logo-image
         - if (mobileLogo)
           img(src=config.logoMobile).logo-image.visible-xs-inline-block
         //- span.logo-link=t('common.app-name')

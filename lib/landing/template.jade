@@ -1,0 +1,60 @@
+#landing
+  .container-fluid
+    .row
+      .col-sm-12.col-md-8.col-md-offset-2.filter
+        .row.well.well-lg
+          .col-md-12.col-xs-12.text-center
+            .row.higher
+              .input-group.input-group-md
+                span.input-group-addon
+                  i.glyphicon.glyphicon-search
+                input.form-control.search(type='text', placeholder='#{t("landing.search.placeholder")}', autofocus)
+            .row.lower
+              .col-md-4.col-sm-6.col-xs-12.filters.text-center
+                .hidden-lg.hidden-md.hidden-sm &nbsp;
+                span#author-filter
+              .col-md-4.col-sm-6.col-xs-12.filters.text-center
+                .hidden-lg.hidden-md.hidden-sm &nbsp;
+                span#tag-filter
+              .col-md-4.col-sm-12.col-xs-12.sort
+                .hidden-lg.hidden-md &nbsp;
+                span#sort-button
+
+    .row
+      .col-md-12.card
+        .row.hide.text-center#nomatch
+          span=t('landing.filter.nomatch')
+        .row.list
+          for law in laws
+            .col-md-4
+              .well.law(style="background: linear-gradient(transparent, #f5f5f5 30px)")
+                if (law.closed)
+                  .corner-ribbon.top-left(style="transform:rotate(-45deg);-webkit-transform:rotate(-45deg);")=t('landing.close.past')
+                a(href='/topic/#{law.id}').law-title-link.text-center
+                  h2.law-title=law.mediaTitle
+                .law-closing-date.hide=law.closingAt
+                .author-wrapper
+                  .author
+                    a(href='/profile/#{law.author.id}')
+                        img(src='#{law.author.avatar}')
+                    p=t('landing.author') + ': '
+                      a.author-link.law-author(href='/profile/#{law.author.id}')=law.author.fullName
+                  br
+                  .tags  
+                    p=t('landing.project') + ': '
+                      span.law-project=law.projecttype.name
+                    p=t('landing.tag') + ': '
+                      span.law-tag=law.tag.name
+                //.pic(style='background-image:url(#{law.imageUrl})')
+                  span
+                .summary.hidden-xs
+                  !=law.clauses
+                //.law-keywords.hide
+                  =law.keywords.join(' ')
+              .participants
+                - if (law.participants.length)
+                  span=law.participants.length
+                  span=" " + t('landing.participate')
+                - else
+                  span=t('landing.be.first')
+              a(href='/topic/#{law.id}').btn.btn-primary.btn-block.discuss=t('landing.discuss')

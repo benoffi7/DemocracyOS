@@ -1,0 +1,48 @@
+#profile-container
+  #profile
+    .profile-content.col-md-6.col-md-offset-3
+      .col-md-12    
+        .image-container
+          img(src=user.avatar, width="65")          
+          
+      .col-md-12(style="margin-top:15px")
+        label=t('settings.profile.name') + ": " + user.fullName
+        br
+        label=t('signup.email') + ": " + user.email
+        br
+        label=t('admin-userlist-form.label.level') + ": " + user.levelType          
+        br
+        label=t('admin-userlist-form.label.usertype') + ": " + user.usertype.name
+          a.usertype-profile(href="javascript:void();")
+            img.avatar(src='/uploads/usertype/' + user.usertype.id)
+        br
+        - if (user.web)
+          label="Web: "
+            a(href=user.facebook, target="_blank")=user.web
+          br
+        - if (user.facebook)
+          label.flaticon.social.facebook
+          label
+            a(href=user.facebook, target="_blank")=user.facebook
+          br
+        - if (user.twitter)
+          label.flaticon.social.twitter
+          label
+            a(href=user.twitter, target="_blank")=user.twitter
+          br
+        - if (user.linkedin)
+          label.flaticon.social.linkedin
+          label
+            a(href=user.linkedin, target="_blank")=user.linkedin
+          br
+        - if (user.googlePlus)
+          label.flaticon.social.google-plus
+          label
+            a(href=user.googlePlus, target="_blank")=user.googlePlus
+          br
+        - if (user.youtube)
+          label.flaticon.social.youtube
+          label
+            a(href=user.youtube, target="_blank")=user.youtube
+          br
+    
