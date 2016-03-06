@@ -1,0 +1,19 @@
+#usertype-project-wrapper
+  .usertype-project-admin
+    .row
+      .col-md-12.form-group
+        label= t('admin-usertype-project.label.type')
+        select.form-control.select.filterUsertype(name='usertype', validate='required')
+          option(value="0")=t('admin-usertype-project.select-tag')
+          - each usertype in userstypes
+            if usertype.id == actualUsertypeId
+              option(selected="selected", value=usertype.id)=usertype.name
+            else
+              option(value=usertype.id)=usertype.name
+    .row
+      .list.list-group
+        if actualUsertype
+          each project in projects
+            a.list-group-item(data-projectid=project.id)
+              span.project-title=project.name
+              .form-group.checkbox(class=project.hash)

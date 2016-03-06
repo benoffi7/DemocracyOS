@@ -1,30 +1,48 @@
 #landing
   .container-fluid
     .row
-      .col-sm-12.col-md-8.col-md-offset-2.filter
+      .col-sm-12.col-md-10.col-md-offset-1.filter
         .row.well.well-lg
-          .col-md-12.col-xs-12.text-center
-            .row.higher
-              .input-group.input-group-md(data-filter)
-                span.input-group-addon
-                  i.glyphicon.glyphicon-search
-                input.form-control.search(type='text', placeholder='#{t("landing.search.placeholder")}', autofocus)
           .row
-            .col-md-4.form-group(data-filter-tag)
+            .col-md-8.col-xs-12.text-center
+              .row.higher
+                .input-group.input-group-md(data-filter)
+                  span.input-group-addon
+                    i.glyphicon.glyphicon-search
+                  input.form-control.search(type='text', placeholder='#{t("landing.search.placeholder")}', autofocus)
+            .col-md-4.col-xs-12.text-center
+              div
+                button#sort-landing-date.btn.btn-primary.sort.col-md-6.col-lg-5.col-lg-offset-1(data-sort-date='data-sort-date')=t('landing.publishedAt')
+                  //span.glyphicon.glyphicon-time
+                button#sort-landing-part.btn.btn-primary.sort.col-md-6.col-lg-5.col-lg-offset-1(data-sort-participants='data-sort-participants')=t('landing.participants')
+                  //span.glyphicon.glyphicon-font
+          .row
+            .col-md-3.form-group(data-filter-tag)
               select(name='tag' style='background: transparent url("data:image/gif;base64,R0lGODlhCwALAJEAAAAAAP///xUVFf///yH5BAEAAAMALAAAAAALAAsAAAIPnI+py+0/hJzz0IruwjsVADs=") no-repeat scroll 95% 42%; background-color: #337ab7; ')
-                option(value="-1")="Tags: Todos"
-                 - each tag in tags
-                   option(value=tag.id)= tag.name
-            .col-md-4.form-group(data-filter-project)
+                - if (defaultTag)
+                  option(value=defaultTag.id)=defaultTag.name
+                -else
+                  option(value="-1")="Tags: Todos"
+                - each tag in tags
+                  option(value=tag.id)= tag.name
+            .col-md-3.form-group(data-filter-project)
               select(name='project' style='background: transparent url("data:image/gif;base64,R0lGODlhCwALAJEAAAAAAP///xUVFf///yH5BAEAAAMALAAAAAALAAsAAAIPnI+py+0/hJzz0IruwjsVADs=") no-repeat scroll 95% 42%; background-color: #337ab7; ')
                 option(value="-1")="Proyectos: Todos"
                 - each projecttype in projects
                   option(value=projecttype.id)= projecttype.name
-            .col-md-4.form-group(data-filter-user)
+            .col-md-3.form-group(data-filter-user)
               select(name='user' style='background: transparent url("data:image/gif;base64,R0lGODlhCwALAJEAAAAAAP///xUVFf///yH5BAEAAAMALAAAAAALAAsAAAIPnI+py+0/hJzz0IruwjsVADs=") no-repeat scroll 95% 42%; background-color: #337ab7; ')
-                option(value="-1")="Usuarios: Todos"
+                - if (defaultUser)
+                  option(value=defaultUser.id)=defaultUser.fullName
+                - else
+                  option(value="-1")="Usuarios: Todos"
                 - each userlist in users
                   option(value=userlist.id)= userlist.fullName
+            .col-md-3.form-group(data-filter-state)
+              select(name='user' style='background: transparent url("data:image/gif;base64,R0lGODlhCwALAJEAAAAAAP///xUVFf///yH5BAEAAAMALAAAAAALAAsAAAIPnI+py+0/hJzz0IruwjsVADs=") no-repeat scroll 95% 42%; background-color: #337ab7; ')
+                option(value="0")="Estado: Todos"
+                option(value="1")="Abiertos"
+                option(value="-1")="Cerrados"
     .row
       .col-md-12.card
         .row.hide.text-center#nomatch

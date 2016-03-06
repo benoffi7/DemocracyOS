@@ -84,6 +84,17 @@
             a.add-link.btn.btn-block.btn-info(href='#')= t('admin-topics-form.button.add-link')
             .form-group: input.btn.btn-success.btn-block.btn-lg.hide(type='submit', tabindex=12, value=t('admin-topics-form.button.submit'))
           span.add-link-forbidden.hide=t('admin-topics-form.message.add-link-forbidden')
+        .form-group
+          label= t('admin-topics-form.label.labels')
+          .topic-labels-des
+            - each label in topic.labels
+              include label
+          .topic-labels
+            select#labels-select.form-control(name='label', tabindex=13, validate='required')
+              - each label in labels
+                option(value=label.id)= label.name
+            a.add-label.btn(href='#')
+              span.glyphicon.glyphicon-floppy-disk
     .col-md-3.commands
       a.btn.btn-success.btn-block.save
         span=t('admin-topics-form.button.submit')
@@ -91,6 +102,8 @@
         span=t('admin-topics-form.button.make-private')
       a.btn.btn-primary.btn-block.make-public(class=topic.draft && topic.id ? '' : 'hide')
         span=t('admin-topics-form.button.make-public')
+      a.btn.btn-primary.btn-block.make-view(href=topic.url, target="_blank", class=topic.id ? '' : 'hide')
+        span=t('admin-topics-form.button.make-view')
       - if (topic.id)
         a.btn.btn-danger.btn-block.delete-topic
           span=t('admin-topics-form.delete-topic.button.delete')

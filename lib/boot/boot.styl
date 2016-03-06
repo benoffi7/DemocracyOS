@@ -371,6 +371,31 @@ body
   -webkit-transition -webkit-transform 0.4s
   transition transform 0.4s
 
+.modal-dialog
+  .share-links, .favorite
+    margin-bottom 40px
+    a
+      background #666
+      padding 10px
+      margin-right 10px
+      border-radius border_radius
+      color white
+      display inline-block
+      line-height 10px
+      -webkit-transition all 0.3s ease
+      &:hover
+        text-decoration none
+      &.facebook:hover
+        background #3b5998
+      &.twitter:hover
+        background #3498db
+
+    .unfavorite-option
+      i
+        display: inline-block;
+        transform s("rotate(%s)", 180deg)
+        -ms-transform s("rotate(%s)", 180deg) /* IE 9 */
+        -webkit-transform s("rotate(%s)", 180deg)
 
 @import '../*/styles'
 @import './boot-responsive'

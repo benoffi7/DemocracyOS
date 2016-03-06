@@ -2,7 +2,7 @@
   .well.law
     if (law.closed)
       .corner-ribbon.top-left(style="transform:rotate(-45deg);-webkit-transform:rotate(-45deg);")=t('landing.close.past')
-    a(href='/topic/#{law.id}').law-title-link.text-center
+    a(href='#{law.url}').law-title-link.text-center
       h2.law-title=law.mediaTitle
     .law-closing-date.hide=law.closingAt
     .author-wrapper
@@ -10,7 +10,7 @@
         a(href='/profile/#{law.author.id}')
           img(src='#{law.author.avatar}')
         p=t('landing.author') + ': '
-          a.author-link.law-author(href='/profile/#{law.author.id}')=law.author.fullName
+          a.author-link.law-author(href='/profile/#{law.author.username}')=law.author.fullName
       br
       .tags  
         p=t('landing.project') + ': '
@@ -29,4 +29,4 @@
       span=" " + t('landing.participate')
     - else
       span=t('landing.be.first')
-  a(href='/topic/#{law.id}').btn.btn-primary.btn-block.discuss=t('landing.discuss')
+  a(href='#{law.url}').btn.btn-primary.btn-block.discuss=t('landing.discuss')

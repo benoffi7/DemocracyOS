@@ -1,0 +1,18 @@
+#myModal.modal.fade(tabindex="-1",role="dialog")
+ .modal-dialog
+    .modal-content
+      .modal-header
+        button.close(type="button", data-dismiss="modal", aria-label="Close")
+          span(aria-hidden="true")="x"
+        h4.modal-title="Compartir"
+      .modal-body
+        p="He votado en este proyecto "
+          a(href="#")=baseUrl + "/topic/" + topic.hash
+          =" via #DemocraciaDigitial"
+        .share-links
+          a(target="_blank", href="http://www.facebook.com/sharer.php?u=#{baseUrl}/topic/#{topic.hash}").flaticon.social.facebook
+          a(target="_blank", href="http://twitter.com/share?text=He votado en este proyecto via DemocraciaDigitial").flaticon.social.twitter
+          a(target="_blank", href="https://plus.google.com/share?url=#{baseUrl}/topic/#{topic.hash}").flaticon.social.google-plus
+          a(target="_blank", href="mailto: ?body=He votado en este proyecto #{baseUrl}/topic/#{topic.hash} via DemocraciaDigitial").flaticon.solid.mail
+      .modal-footer
+        a.dont-show.btn.btn-primary(href="/settings/notifications")="No Volver a Mostrar"

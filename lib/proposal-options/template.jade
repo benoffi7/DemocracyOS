@@ -28,13 +28,13 @@
       .vote-options(class= voted || closed ? 'hide' : '')
         h5= t('proposal-options.vote')
         .direct-vote
-          a.vote-option.vote-yes(href="#", data-proposal=proposal.id)
+          a.vote-option.vote-yes(href="#", data-proposal=proposal.id, data-toggle="modal", data-target="#myModal")
             i.flaticon.solid.thumbs-up-1
             span= t('proposal-options.yea')
-          a.vote-option.vote-abstain(href="#", data-proposal=proposal.id)
+          a.vote-option.vote-abstain(href="#", data-proposal=proposal.id, data-toggle="modal", data-target="#myModal")
             i.flaticon.solid.pause
             span= t('proposal-options.abstain')
-          a.vote-option.vote-no(href="#", data-proposal=proposal.id)
+          a.vote-option.vote-no(href="#", data-proposal=proposal.id, data-toggle="modal", data-target="#myModal")
             i.flaticon.solid.thumbs-up-1
             span= t('proposal-options.nay')
 

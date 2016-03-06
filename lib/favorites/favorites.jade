@@ -1,0 +1,26 @@
+#favorites-container
+  #favorite
+    .favorite-content.col-md-8.col-md-offset-2
+      h1=t("favorites.title")
+      .row
+        .list.list-group
+          - each topic in topics
+            a.list-group-item(href=topic.url)
+              h4.topic-title=topic.mediaTitle
+                small=topic.topicId
+              - if (topic.author)
+                span.glyphicon.glyphicon-user
+                span.text=topic.author.fullName
+              span.glyphicon.glyphicon-time
+              - if (topic.closingAt)
+                - var date = new Date(topic.closingAt)
+                - var relative = moment(date).fromNow()
+                - var when = (date < Date.now()) ? 'past' : 'future'
+                span.text=t('admin-topics.list.close.' + when) + ' ' + relative
+              - else
+                span.text=t('article.unknown-closing-date')
+              span.glyphicon.glyphicon-tag
+              span.text.topic-id=topic.tag.name            
+              span.glyphicon.glyphicon-book
+              span.text.projecttype-id=topic.projecttype.name
+              span.topic-date.hide=topic.createdAt

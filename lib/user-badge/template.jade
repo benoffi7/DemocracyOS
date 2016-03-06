@@ -11,6 +11,7 @@
       li: a(href='/admin')= t('header.admin')
     - if (user.staff)
       li: a(href='/confighome')= t('header.confighome')
+    li: a(href='/favorites')= t('header.favorites')
     li: a(href='/settings')= t('header.settings')
     - if (config.frequentlyAskedQuestions)
       li: a(href="/help/faq")= t('help.faq.title')

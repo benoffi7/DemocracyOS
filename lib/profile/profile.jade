@@ -45,4 +45,20 @@
           label
             a(href=user.youtube, target="_blank")=user.youtube
           br
+      .col-md-12(style="margin-top:15px")
+        h3=t('settings.profile.estadisticas')
+        label=t('settings.profile.total') + ": " + estadistica.total
+        br
+        label=t('settings.profile.total-open') + ": " + estadistica.totalOpen
+        br
+        label=t('settings.profile.total-posi') + ": " + estadistica.totalClosePos
+        br
+        label=t('settings.profile.total-nega') + ": " + estadistica.totalCloseNeg
+        br
+        label=t('settings.profile.total-empa') + ": " + estadistica.totalCloseIgu
+        br
+        h4=t('settings.profile.comision')
+        - each tag in estadistica.totalTags
+          label=tag.name + ": " + tag.total
+          br
     
