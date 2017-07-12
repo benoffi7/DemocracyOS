@@ -1,0 +1,23 @@
+#genericConfig-wrapper.hide
+  .genericConfig-configmail
+    .heading
+      .circle
+        i.icon-user
+      h1= t('configmail.genericConfig')
+    form.form(action="/api/configmail/" + configmail.id, method="post", role="form", autocomplete="off", autovalidate='autovalidate', autosubmit="autosubmit", identifier='genericConfig-wrapper')
+      ul.form-messages
+      .form-group
+        label #{t('configmail.subject')}
+        input.form-control(type='text', id="subject", name='subject', tabindex=1, placeholder=t('configmail.subject'), value='#{configmail.subject}', validate='required')
+      .form-group
+        label= t('configmail.clause')
+        textarea.form-control(name='body', tabindex=2, validate='required')= configmail.body
+      .form-group
+        label= t('configmail.key-words')
+        - each label in keywords
+          p=label
+        span= t('configmail.key-words.desription')
+
+      input.btn.btn-success.btn-block.btn-lg.hide(type='submit', tabindex=3, value=t('configmail.button.submit'))
+      a.btn.btn-success.btn-block.save
+        span=t('configmail.button.submit')

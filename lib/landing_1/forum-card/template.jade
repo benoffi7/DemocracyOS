@@ -14,9 +14,9 @@
       br
       .tags  
         p=t('landing.project') + ': '
-          span.law-project=law.projecttype.name
+          a.law-project(href='/proyecto/#{law.projecttype.hash}')=law.projecttype.name
         p=t('landing.tag') + ': '
-          span.law-tag=law.tag.name
+          a.law-tag(href='/comision/#{law.tag.hash}')=law.tag.name
       //.pic(style='background-image:url(#{law.imageUrl})')
         span
     .summary.hidden-xs

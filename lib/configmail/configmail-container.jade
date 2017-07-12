@@ -1,0 +1,11 @@
+#configmail-container
+  #configmail
+    .sidebar-container
+      ul.configmail-menu
+        li.heading= t('configmail.title')
+        li: a(href="/configmail/welcome-email")= t('configmail.welcome')
+        li: a(href="/configmail/reset-password")= t('configmail.reset-password')
+        li: a(href="/configmail/topic-published")= t('configmail.topic-published')
+        li: a(href="/configmail/new-comment")= t('configmail.new-comment')
+        li: a(href="/configmail/topic-close")= t('configmail.topic-close')
+    .configmail-content

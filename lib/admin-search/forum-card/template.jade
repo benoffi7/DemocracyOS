@@ -1,0 +1,19 @@
+a.list-group-item(href="/admin/topics/" + topic.id, data-topicid=topic.id)
+  h4.topic-title=topic.mediaTitle
+    small=topic.topicId
+  - if (topic.author)
+    span.glyphicon.glyphicon-user
+    span.text=topic.author.fullName
+  span.glyphicon.glyphicon-time
+  - if (topic.closingAt)
+    span.text=topic.closingAt.replace(/T/, ' ').replace(/\..+/, '')
+  - else
+    span.text=t('article.unknown-closing-date')
+  - if (topic.tag)
+    span.glyphicon.glyphicon-tag
+    span.text.topic-id=topic.tag.name
+  - if (topic.projecttype)
+    span.glyphicon.glyphicon-book
+    span.text.projecttype-id=topic.projecttype.name
+  - if (topic.createdAt)
+    span.topic-date.hide=topic.createdAt

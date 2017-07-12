@@ -107,3 +107,6 @@
       - if (topic.id)
         a.btn.btn-danger.btn-block.delete-topic
           span=t('admin-topics-form.delete-topic.button.delete')
+      - if (topic.closed)
+        a.btn.btn-danger.btn-block.show-votes(href="#{prepend}/admin/topics/" + topic.id + "/votes")
+          span=t('admin-topics-form.button.votes')

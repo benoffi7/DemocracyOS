@@ -1,0 +1,12 @@
+#topics-wrapper
+  .topics-admin
+    h1=topic.mediaTitle
+    .row
+      button.btn.print-votes=t('admin-topics-votes.print')
+    .row      
+      .list.list-group
+        - each vote in votes
+          a.list-group-item(class=vote.value)
+            h4.topic-title=t('admin-topic-votes.' + vote.value) + " - " + vote.author.fullName
+            span.glyphicon.glyphicon-time
+            span.text=vote.createdAt.replace(/T/, ' ').replace(/\..+/, '')
